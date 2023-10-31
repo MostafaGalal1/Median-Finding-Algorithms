@@ -10,7 +10,8 @@ import Algorithms.NaiveSorting;
 public class Main {
     public static void main(String[] args) {
         Random random = new Random();
-        for (int j = 0; j < 100; j++) {
+
+        for (int j = 0; j < 10; j++) {
             Integer[] A = new Integer[1000000];
 
             for (int i = 0; i < A.length; i++) {
@@ -30,7 +31,6 @@ public class Main {
         }
     }
 }
-
 
 
 
