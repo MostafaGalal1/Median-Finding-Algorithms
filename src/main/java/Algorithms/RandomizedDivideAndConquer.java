@@ -20,7 +20,7 @@ public class RandomizedDivideAndConquer extends MedianFindingAlgorithm {
         int i = p-1;
 
         for (int j = p; j < r; j++){
-            if (A[j] <= x){
+            if (A[j] < x){
                 i++;
                 swap(i, j);
             }
@@ -55,6 +55,6 @@ public class RandomizedDivideAndConquer extends MedianFindingAlgorithm {
 
     @Override
     public int getMedian(){
-        return randomizedSelect(0, A.length-1, (A.length-1)/2);
+        return randomizedSelect(0, A.length-1, (A.length+1)/2);
     }
 }

@@ -11,7 +11,7 @@ public class Main {
     public static void main(String[] args) {
         Random random = new Random();
 
-        for (int j = 0; j < 10; j++) {
+        for (int j = 0; j < 50; j++) {
             int[] A = new int[1000000];
 
             for (int i = 0; i < A.length; i++) {
