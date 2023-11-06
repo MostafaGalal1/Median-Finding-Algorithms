@@ -9,6 +9,12 @@ public class RandomizedDivideAndConquer<T extends Comparable<T>> extends MedianF
         this.random = new Random();
     }
 
+    private void swap(int i, int j) {
+        T temp = A[i];
+        A[i] = A[j];
+        A[j] = temp;
+    }
+
     private int partition(int p, int r){
         T x = A[r];
         int i = p-1;
@@ -16,37 +22,39 @@ public class RandomizedDivideAndConquer<T extends Comparable<T>> extends MedianF
         for (int j = p; j < r; j++){
             if (A[j].compareTo(x) < 1){
                 i++;
-                T temp = A[i];
-                A[i] = A[j];
-                A[j] = temp;
+                swap(i, j);
             }
         }
 
-        T temp = A[i+1];
-        A[i+1] = A[r];
-        A[r] = temp;
+        swap(i+1, r);
         return i+1;
     }
 
     private int randomizedPartition(int p, int r){
         int i = random.nextInt(r - p + 1) + p;
-        T temp = A[i];
-        A[i] = A[r];
-        A[r] = temp;
+        swap(i, r);
 
         return partition(p, r);
     }
-    private void randomizedQuickSort(int p, int r) {
-        if (p < r) {
-            int q = randomizedPartition(p, r);
-            randomizedQuickSort(p, q - 1);
-            randomizedQuickSort(q + 1, r);
+    private T randomizedSelect(int p, int r, int i) {
+        if (p == r) {
+            return A[p];
+        }
+
+        int q = randomizedPartition(p, r);
+        int k = q - p + 1;
+
+        if (i == k) {
+            return A[q];
+        } else if (i < k) {
+            return randomizedSelect(p, q - 1, i);
+        } else {
+            return randomizedSelect(q + 1, r, i - k);
         }
     }
 
     @Override
     public T getMedian(){
-        randomizedQuickSort(0, A.length-1);
-        return A[(A.length-1)/2];
+        return randomizedSelect(0, A.length-1, (A.length-1)/2);
     }
 }

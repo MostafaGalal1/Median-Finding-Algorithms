@@ -56,7 +56,7 @@ public class Test {
         algorithmsFactory = new AlgorithmsFactory<Integer>();
         printHeader();
         for (int i = 2; i < 8; i++) {
-            Integer[] A = generateArray((int)Math.pow(10, i));
+            Integer[] A = generateArray((int)Math.pow(10, 7));
             double randomized = algorithmTest(Algorithms.Randomized, A);
             double deterministic = algorithmTest(Algorithms.Deterministic, A);
             double naive = algorithmTest(Algorithms.Naive, A);
