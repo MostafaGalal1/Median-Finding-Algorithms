@@ -2,8 +2,8 @@ package Algorithms;
 
 import java.util.Arrays;
 
-public class NaiveSorting<T extends Comparable<T>> extends MedianFindingAlgorithm<T> {
-    public NaiveSorting(T[] A) {
+public class NaiveSorting extends MedianFindingAlgorithm {
+    public NaiveSorting(int[] A) {
         super(A);
     }
 
@@ -12,7 +12,7 @@ public class NaiveSorting<T extends Comparable<T>> extends MedianFindingAlgorith
     }
 
     @Override
-    public T getMedian(){
+    public int getMedian(){
         sort();
         return A[(A.length-1)/2];
     }

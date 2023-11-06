@@ -7,10 +7,10 @@ import java.util.Random;
 
 public class Test {
     private Random random;
-    private AlgorithmsFactory<Integer> algorithmsFactory;
+    private AlgorithmsFactory algorithmsFactory;
 
-    public Integer[] generateArray(int size){
-        Integer[] A = new Integer[size];
+    public int[] generateArray(int size){
+        int[] A = new int[size];
         for (int i = 0; i < size; i++){
             int RANGE_MAX = (int) 1e9;
             int RANGE_MIN = (int) -1e9;
@@ -21,8 +21,8 @@ public class Test {
         return A;
     }
 
-    public double algorithmTest(Algorithms algoType, Integer[] A){
-        MedianFindingAlgorithm<Integer> algorithm = algorithmsFactory.getAlgorithm(algoType, A);
+    public double algorithmTest(Algorithms algoType, int[] A){
+        MedianFindingAlgorithm algorithm = algorithmsFactory.getAlgorithm(algoType, A);
         double averageRunningTime = 0;
 
         int runsCount = 10;
@@ -53,10 +53,10 @@ public class Test {
 
     public void driver() {
         random = new Random();
-        algorithmsFactory = new AlgorithmsFactory<Integer>();
+        algorithmsFactory = new AlgorithmsFactory();
         printHeader();
         for (int i = 2; i < 8; i++) {
-            Integer[] A = generateArray((int)Math.pow(10, 7));
+            int[] A = generateArray((int)Math.pow(10, 7));
             double randomized = algorithmTest(Algorithms.Randomized, A);
             double deterministic = algorithmTest(Algorithms.Deterministic, A);
             double naive = algorithmTest(Algorithms.Naive, A);

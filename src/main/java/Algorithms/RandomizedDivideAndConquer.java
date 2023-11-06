@@ -2,25 +2,25 @@ package Algorithms;
 
 import java.util.Random;
 
-public class RandomizedDivideAndConquer<T extends Comparable<T>> extends MedianFindingAlgorithm<T> {
+public class RandomizedDivideAndConquer extends MedianFindingAlgorithm {
     private final Random random;
-    public RandomizedDivideAndConquer(T[] A) {
+    public RandomizedDivideAndConquer(int[] A) {
         super(A);
         this.random = new Random();
     }
 
     private void swap(int i, int j) {
-        T temp = A[i];
+        int temp = A[i];
         A[i] = A[j];
         A[j] = temp;
     }
 
     private int partition(int p, int r){
-        T x = A[r];
+        int x = A[r];
         int i = p-1;
 
         for (int j = p; j < r; j++){
-            if (A[j].compareTo(x) < 1){
+            if (A[j] <= x){
                 i++;
                 swap(i, j);
             }
@@ -36,7 +36,7 @@ public class RandomizedDivideAndConquer<T extends Comparable<T>> extends MedianF
 
         return partition(p, r);
     }
-    private T randomizedSelect(int p, int r, int i) {
+    private int randomizedSelect(int p, int r, int i) {
         if (p == r) {
             return A[p];
         }
@@ -54,7 +54,7 @@ public class RandomizedDivideAndConquer<T extends Comparable<T>> extends MedianF
     }
 
     @Override
-    public T getMedian(){
+    public int getMedian(){
         return randomizedSelect(0, A.length-1, (A.length-1)/2);
     }
 }

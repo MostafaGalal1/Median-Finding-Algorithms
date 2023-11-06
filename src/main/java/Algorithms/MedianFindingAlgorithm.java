@@ -1,11 +1,11 @@
 package Algorithms;
 
-public abstract class MedianFindingAlgorithm<T extends Comparable<T>> {
-    protected final T[] A;
+public abstract class MedianFindingAlgorithm {
+    protected final int[] A;
 
-    public MedianFindingAlgorithm(T[] A){
+    public MedianFindingAlgorithm(int[] A){
         this.A = A.clone();
     }
 
-    public abstract T getMedian();
+    public abstract int getMedian();
 }
