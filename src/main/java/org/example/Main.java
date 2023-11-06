@@ -1,5 +1,7 @@
 package org.example;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Random;
 
 import Algorithms.RandomizedDivideAndConquer;
@@ -13,9 +15,13 @@ public class Main {
 
         for (int j = 0; j < 50; j++) {
             int[] A = new int[1000000];
+            boolean[] check = new boolean[10000000];
 
             for (int i = 0; i < A.length; i++) {
-                A[i] = random.nextInt(1000000);
+                do {
+                    A[i] = random.nextInt(1000000);
+                } while (check[A[i]]);
+                check[A[i]] = true;
             }
             RandomizedDivideAndConquer randomizedDivideAndConquer = new RandomizedDivideAndConquer(A);
             DeterministicLinearTimeSelection deterministicLinearTimeSelection = new DeterministicLinearTimeSelection(A);

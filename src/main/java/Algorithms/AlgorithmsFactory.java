@@ -1,6 +1,6 @@
 package Algorithms;
 
-public class AlgorithmsFactory <T extends Comparable<T>> {
+public class AlgorithmsFactory {
 
     public MedianFindingAlgorithm getAlgorithm (Algorithms algorithm, int[] A){
         return switch (algorithm) {

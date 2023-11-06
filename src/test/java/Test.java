@@ -11,11 +11,13 @@ public class Test {
 
     public int[] generateArray(int size){
         int[] A = new int[size];
-        for (int i = 0; i < size; i++){
-            int RANGE_MAX = (int) 1e9;
-            int RANGE_MIN = (int) -1e9;
-            int val = random.nextInt(RANGE_MAX - RANGE_MIN + 1) + RANGE_MIN;
-            A[i] = val;
+        boolean[] check = new boolean[size];
+
+        for (int i = 0; i < A.length; i++) {
+            do {
+                A[i] = random.nextInt(size);
+            } while (check[A[i]]);
+            check[A[i]] = true;
         }
 
         return A;
